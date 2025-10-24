@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Stage') {
-      steps {
-        sh 'pwd'
+      parallel {
+        stage('Stage') {
+          steps {
+            sh 'pwd'
+          }
+        }
+
+        stage('stage1') {
+          steps {
+            sh 'free -m'
+          }
+        }
+
       }
     }
 
